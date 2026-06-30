@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Leaderboard - Shredz S1</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <style>
+      .podium { display:flex; align-items:flex-end; justify-content:center; gap:14px; margin:20px 0 28px; }
+      .podium .spot { text-align:center; flex:1; max-width:140px; }
+      .podium .pillar { border-radius:20px 20px 0 0; margin-top:12px; display:flex; align-items:flex-start; justify-content:center; padding-top:10px; font-weight:800; }
+      .podium .p1 .pillar { height:120px; background:linear-gradient(180deg,var(--accent),transparent); }
+      .podium .p2 .pillar { height:90px; background:linear-gradient(180deg,#c0c6d0,transparent); }
+      .podium .p3 .pillar { height:70px; background:linear-gradient(180deg,#cd7f32,transparent); }
+      .lb-row { display:grid; grid-template-columns:42px 1fr auto auto; align-items:center; gap:12px; padding:14px; }
+      .lb-row + .lb-row { border-top:1px solid var(--card-border); }
+      .lb-row.me { background:rgba(16,185,129,.08); border-radius:14px; }
+    </style>
+  </head>
+  <body>
+    <div id="app-shell"></div>
+    <main class="app-main" id="main"><div class="page-head"><h1>Leaderboard</h1></div></main>
+    <script type="module" src="js/pages/leaderboard.js"></script>
+  </body>
+</html>

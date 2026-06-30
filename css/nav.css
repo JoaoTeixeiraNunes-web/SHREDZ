@@ -1,0 +1,112 @@
+/* ===== Floating navigation ===== */
+.nav {
+  position: fixed;
+  z-index: 500;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(14px + var(--safe-bottom));
+  width: min(94vw, 560px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(14, 14, 16, 0.7);
+  border: 1px solid var(--card-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  box-shadow: var(--shadow-lg);
+}
+.nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  border-radius: var(--radius-pill);
+  color: var(--text-tertiary);
+  font-size: 0.66rem;
+  font-weight: 600;
+  transition: color var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--spring);
+}
+.nav a svg { width: 22px; height: 22px; stroke-width: 2; }
+.nav a:hover { color: var(--text-secondary); transform: translateY(-2px); }
+.nav a.active { color: var(--primary); background: rgba(16, 185, 129, 0.12); }
+.nav a.admin.active { color: var(--accent); background: rgba(245, 197, 66, 0.12); }
+
+/* ===== Top bar ===== */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 400;
+  height: var(--nav-h);
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 var(--gutter);
+  background: linear-gradient(180deg, rgba(5,5,5,0.9), rgba(5,5,5,0));
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.topbar .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; }
+.topbar .brand .logo { width: 30px; height: 30px; }
+.topbar .actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.admin-shell .topbar {
+  background: linear-gradient(180deg, rgba(24, 20, 11, 0.96), rgba(24, 20, 11, 0.1));
+  border-bottom: 1px solid rgba(245, 197, 66, 0.16);
+}
+.admin-shell .topbar::after {
+  content: 'ADMIN MODE';
+  position: absolute;
+  right: calc(var(--gutter) + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  opacity: 0.9;
+}
+.admin-shell .nav {
+  background: rgba(36, 31, 16, 0.92);
+  border-color: rgba(245, 197, 66, 0.2);
+}
+.admin-shell .nav a.active {
+  color: var(--accent);
+  background: rgba(245, 197, 66, 0.16);
+}
+.admin-shell .nav a.admin { color: var(--accent); }
+.admin-shell .pill-gold {
+  background: rgba(245, 197, 66, 0.12);
+  color: var(--accent);
+}
+  position: absolute; top: -4px; right: -4px;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 999px; background: var(--danger); color: #fff;
+  font-size: 0.68rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Notification dropdown */
+.notif-panel {
+  position: fixed; top: calc(var(--nav-h) - 6px); right: var(--gutter);
+  width: min(92vw, 360px); max-height: 70vh; overflow-y: auto;
+  z-index: 600; padding: 8px;
+  animation: modal-in var(--dur) var(--spring);
+}
+.notif-item { display: flex; gap: 10px; padding: 12px; border-radius: var(--radius-sm); transition: background var(--dur-fast); }
+.notif-item:hover { background: var(--card); }
+.notif-item.unread { background: rgba(16,185,129,0.07); }
+.notif-item .n-title { font-weight: 600; font-size: 0.9rem; }
+.notif-item .n-body { font-size: 0.82rem; color: var(--text-secondary); }
+.notif-item .n-time { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 2px; }
+
+@media (min-width: 860px) {
+  .nav {
+    top: 50%; bottom: auto; left: 18px; transform: translateY(-50%);
+    flex-direction: column; width: auto; height: auto;
+    border-radius: var(--radius-lg); padding: 12px 8px;
+  }
+  .nav a { font-size: 0.6rem; padding: 10px 12px; }
+  .app-main { padding-left: calc(var(--gutter) + 90px); }
+  .topbar { padding-left: calc(var(--gutter) + 90px); }
+}

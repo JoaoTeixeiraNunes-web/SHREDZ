@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Sign in - Shredz Season 1</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <style>
+      .login-wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .login-card { width: min(94vw, 420px); padding: 40px 32px; text-align: center; }
+      .login-logo { width: 76px; height: 76px; margin: 0 auto 18px; filter: drop-shadow(0 8px 24px var(--primary-glow)); }
+      .login-card h1 { font-size: 1.9rem; }
+      .login-card .sub { color: var(--text-secondary); margin: 6px 0 28px; }
+      .login-card form { text-align: left; }
+      .login-card .field { margin-bottom: 16px; }
+      .hint { font-size: 0.78rem; color: var(--text-tertiary); margin-top: 18px; }
+    </style>
+  </head>
+  <body>
+    <div class="login-wrap">
+      <div class="glass card-lg login-card fade-up">
+        <svg class="login-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#6ee7b7"/>
+          </linearGradient></defs>
+          <path d="M30 6 14 26h9l-5 16 20-22h-9l1-14Z" fill="url(#lg)"/>
+        </svg>
+        <h1>Shredz <span style="color:var(--accent)">S1</span></h1>
+        <p class="sub">Sign in to compete</p>
+        <form id="login-form">
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" type="email" autocomplete="username" required placeholder="you@shredz.app" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input class="input" id="password" type="password" autocomplete="current-password" required placeholder="••••••••" />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" id="submit-btn">Sign in</button>
+        </form>
+        <p class="hint">Accounts are created by the admin in Supabase.</p>
+      </div>
+    </div>
+    <script type="module">
+      import { signIn, getSession } from './js/auth.js';
+      import { toast } from './js/ui.js';
+
+      // Already signed in? skip.
+      (async () => {
+        if (await getSession()) window.location.replace('dashboard.html');
+      })();
+
+      const form = document.getElementById('login-form');
+      const btn = document.getElementById('submit-btn');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Signing in…';
+        try {
+          await signIn(
+            document.getElementById('email').value.trim(),
+            document.getElementById('password').value
+          );
+          window.location.href = 'dashboard.html';
+        } catch (err) {
+          toast(err.message || 'Sign in failed', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Sign in';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Votes - Shredz S1</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <style>
+      .opt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:12px; }
+      .opt { border-radius:18px; overflow:hidden; background:var(--card); border:1px solid var(--card-border); cursor:pointer; transition:transform .2s var(--spring),border-color .2s; }
+      .opt:hover { transform:translateY(-3px); border-color:var(--primary); }
+      .opt.disabled { cursor:default; opacity:.85; }
+      .opt img { height:140px; width:100%; object-fit:cover; }
+      .opt .meta { padding:10px; }
+      .rating-row { display:flex; gap:4px; flex-wrap:wrap; margin-top:6px; }
+      .rating-row button { width:30px;height:30px;border-radius:8px;border:1px solid var(--card-border);background:var(--card);cursor:pointer; }
+      .rating-row button:hover { background:var(--primary);color:#03110b; }
+    </style>
+  </head>
+  <body>
+    <div id="app-shell"></div>
+    <main class="app-main" id="main"><div class="page-head"><h1>Votes</h1></div></main>
+    <script type="module" src="js/pages/votes.js"></script>
+  </body>
+</html>

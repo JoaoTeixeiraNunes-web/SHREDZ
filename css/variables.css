@@ -1,0 +1,60 @@
+:root {
+  /* ===== Color palette ===== */
+  --bg: #050505;
+  --bg-elev: #0b0b0d;
+  --card: rgba(255, 255, 255, 0.07);
+  --card-strong: rgba(255, 255, 255, 0.10);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-border-strong: rgba(255, 255, 255, 0.18);
+
+  --primary: #10b981;        /* emerald */
+  --primary-600: #059669;
+  --primary-300: #6ee7b7;
+  --primary-glow: rgba(16, 185, 129, 0.45);
+
+  --accent: #f5c542;         /* gold */
+  --accent-600: #d4a017;
+  --accent-glow: rgba(245, 197, 66, 0.4);
+
+  --danger: #f43f5e;
+  --danger-glow: rgba(244, 63, 94, 0.4);
+  --warning: #fbbf24;
+  --info: #38bdf8;
+
+  --text: #ffffff;
+  --text-secondary: #a9adb6;
+  --text-tertiary: #6b7078;
+
+  /* ===== Glass ===== */
+  --glass-blur: 30px;
+  --glass-blur-sm: 16px;
+
+  /* ===== Radius ===== */
+  --radius-sm: 14px;
+  --radius: 24px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.55);
+  --shadow-primary: 0 10px 30px rgba(16, 185, 129, 0.25);
+
+  /* ===== Motion ===== */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.18s;
+  --dur: 0.32s;
+  --dur-slow: 0.6s;
+
+  /* ===== Typography ===== */
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter',
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* ===== Layout ===== */
+  --nav-h: 72px;
+  --max-w: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
